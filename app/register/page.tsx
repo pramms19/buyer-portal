@@ -6,18 +6,19 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function LoginPage() {
+export default function Register() {
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async (e: any) => {
+  const handleRegister = async (e: any) => {
     e.preventDefault();
     setLoading(true);
 
     const form = new FormData(e.target);
 
-    const res = await fetch("/api/auth/login", {
+    const res = await fetch("/api/auth/register", {
       method: "POST",
       body: JSON.stringify({
+        name: form.get("name"),
         email: form.get("email"),
         password: form.get("password"),
       }),
@@ -26,9 +27,11 @@ export default function LoginPage() {
     setLoading(false);
 
     if (res.ok) {
-      window.location.href = "/dashboard";
+      alert("Account created! Please login.");
+      window.location.href = "/login";
     } else {
-      alert("Login failed");
+      const data = await res.json();
+      alert(data.error || "Something went wrong");
     }
   };
 
@@ -36,14 +39,22 @@ export default function LoginPage() {
     <div className="px-4 sm:px-6 lg:px-8 pt-14 flex justify-center items-center">
       <Card className="bg-white max-w-sm md:max-w-md min-w-xs md:min-w-sm shadow-sm py-6">
         <CardTitle className="text-xl md:text-2xl font-semibold text-secondary-foreground text-center">
-          Login
+          Create Account
         </CardTitle>
         <CardContent>
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleRegister}>
             <FieldGroup>
               <Field>
                 <Input
                   placeholder="Email"
+                  required
+                  className="border rounded-sm text-xs md:text-sm"
+                />
+              </Field>
+
+              <Field>
+                <Input
+                  placeholder="Name"
                   required
                   className="border rounded-sm text-xs md:text-sm"
                 />
@@ -62,15 +73,13 @@ export default function LoginPage() {
                   type="submit"
                   className="w-full rounded-full bg-primary text-xs md:text-sm lg:text-base font-medium text-white hover:bg-secondary-foreground"
                 >
-                  {loading ? "Loading..." : "Login"}
+                  {loading ? "Creating..." : "Register"}
                 </Button>
               </Field>
               <div className="flex gap-1 justify-center text-xs md:text-sm">
-                <p className="text-neutral-400">Don't have an account? </p>{" "}
-                <Link href="/register">
-                  <p className="text-secondary-foreground font-medium">
-                    Register
-                  </p>
+                <p className="text-neutral-400">Already have an account? </p>{" "}
+                <Link href="/login">
+                  <p className="text-secondary-foreground font-medium">Login</p>
                 </Link>
               </div>
             </FieldGroup>
