@@ -1,4 +1,8 @@
 "use client";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { Field, FieldGroup } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
 export default function LoginPage() {
@@ -28,12 +32,42 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="">
-      <form onSubmit={handleLogin}>
-      <input name="email" placeholder="Email" />
-      <input name="password" type="password" />
-      <button>{loading ? "Loading..." : "Login"}</button>
-    </form>
+    <div className="px-4 sm:px-6 lg:px-8 pt-14 flex justify-center items-center">
+      <Card className="bg-white max-w-sm md:max-w-md min-w-xs md:min-w-sm shadow-sm py-6">
+        <CardTitle className="text-xl md:text-2xl font-semibold text-secondary-foreground text-center">
+          Login
+        </CardTitle>
+        <CardContent>
+          <form onSubmit={handleLogin}>
+            <FieldGroup>
+              <Field>
+                <Input
+                  placeholder="Email"
+                  required
+                  className="border rounded-sm text-xs md:text-sm"
+                />
+              </Field>
+
+              <Field>
+                <Input
+                  placeholder="Password"
+                  required
+                  className="text-xs md:text-sm"
+                />
+              </Field>
+
+              <Field orientation="horizontal">
+                <Button
+                  type="submit"
+                  className="w-full rounded-full bg-primary text-xs md:text-sm lg:text-base font-medium text-white hover:bg-secondary-foreground"
+                >
+                  {loading ? "Loading..." : "Login"}
+                </Button>
+              </Field>
+            </FieldGroup>
+          </form>
+        </CardContent>
+      </Card>
     </div>
   );
 }
