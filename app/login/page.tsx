@@ -17,6 +17,10 @@ export default function LoginPage() {
 
     const res = await fetch("/api/auth/login", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
       body: JSON.stringify({
         email: form.get("email"),
         password: form.get("password"),
@@ -43,6 +47,7 @@ export default function LoginPage() {
             <FieldGroup>
               <Field>
                 <Input
+                  name="email"
                   placeholder="Email"
                   required
                   className="border rounded-sm text-xs md:text-sm"
@@ -51,6 +56,8 @@ export default function LoginPage() {
 
               <Field>
                 <Input
+                  name="password"
+                  type="password"
                   placeholder="Password"
                   required
                   className="text-xs md:text-sm"

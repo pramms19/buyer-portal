@@ -17,6 +17,9 @@ export default function Register() {
 
     const res = await fetch("/api/auth/register", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         name: form.get("name"),
         email: form.get("email"),
@@ -46,6 +49,7 @@ export default function Register() {
             <FieldGroup>
               <Field>
                 <Input
+                  name="email"
                   placeholder="Email"
                   required
                   className="border rounded-sm text-xs md:text-sm"
@@ -54,6 +58,7 @@ export default function Register() {
 
               <Field>
                 <Input
+                  name="name"
                   placeholder="Name"
                   required
                   className="border rounded-sm text-xs md:text-sm"
@@ -62,6 +67,8 @@ export default function Register() {
 
               <Field>
                 <Input
+                  name="password"
+                  type="password"
                   placeholder="Password"
                   required
                   className="text-xs md:text-sm"

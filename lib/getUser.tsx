@@ -10,7 +10,7 @@ export async function getUser() {
 
   try {
     const decoded: any = verifyToken(token);
-    return db.users.find(u => u.id === decoded.id);
+    return db.users.find(u => u.id === decoded.id) || null;
   } catch {
     return null;
   }

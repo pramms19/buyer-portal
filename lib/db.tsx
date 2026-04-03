@@ -2,7 +2,7 @@ type User = {
   id: string;
   name: string;
   email: string;
-  password: string; 
+  password: string;
   role: string;
 };
 
@@ -11,6 +11,7 @@ type Property = {
   title: string;
   location: string;
   price: number;
+  img: string;
 };
 
 type Favourite = {
@@ -21,8 +22,20 @@ type Favourite = {
 export const db = {
   users: [] as User[],
   properties: [
-    { id: "1", title: "Modern Apartment", location: "Kathmandu", price: 50000 },
-    { id: "2", title: "Luxury Villa", location: "Pokhara", price: 150000 },
+    {
+      id: "1",
+      title: "Modern House",
+      location: "Kathmandu",
+      price: 50000,
+      img: "/House1",
+    },
+    {
+      id: "2",
+      title: "Luxury Villa",
+      location: "Pokhara",
+      price: 150000,
+      img: "/House2",
+    },
   ] as Property[],
   favourites: [] as Favourite[],
 };

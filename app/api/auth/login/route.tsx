@@ -19,7 +19,7 @@ export async function POST(req: Request) {
   const token = signToken({ id: user.id });
 
   const cookieStore = await cookies();
-  cookieStore.set("token", token, { httpOnly: true });
+  cookieStore.set("token", token, { httpOnly: true, path:"/" });
 
   return Response.json({ message: "Login successful" });
 }
