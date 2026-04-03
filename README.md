@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Buyer Portal
 
-## Getting Started
+## Overview
+This is a simple Buyer Portal built with Next.js.  
+Users can register, log in, and manage their favourite properties.
 
-First, run the development server:
+---
 
-```bash
+## Features
+- User registration and login
+- Password hashing using bcrypt
+- JWT authentication with cookies
+- View list of properties
+- Add/remove favourites
+- Protected routes (only logged-in users)
+- User-specific favourites
+
+---
+
+## Tech Stack
+- Next.js (App Router)
+- React
+- Tailwind CSS
+- shadcn ui
+- JWT (jsonwebtoken)
+- bcryptjs
+
+## Project Structure
+/app  
+  /api  
+    /auth  
+      login/route.ts  
+      register/route.ts  
+    /favourites/route.ts  
+    /properties/route.ts  
+    /me/route.ts  
+
+  /login/page.tsx  
+  /register/page.tsx  
+  /dashboard/page.tsx 
+  globals.css
+  layout.tsx 
+  page.tsx  
+
+/components
+  
+/lib  
+  auth.ts  
+  db.ts  
+  getUser.ts  
+
+---
+
+## Setup
+
+1. Install dependencies:
+npm install
+
+2. Run the project:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open in browser:
+http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## How to Use
 
-## Learn More
+1. Go to /register and create an account  
+2. Go to /login and log in  
+3. You will be redirected to dashboard  
+4. Add/remove/view properties to favourites
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Authentication
+- Uses JWT stored in HTTP-only cookies  
+- Cookies are verified on each request  
+- Unauthorized users are redirected to login  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Note
+This project uses an in-memory database.  
+Data will reset when the server restarts.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## What This Project Shows
+- Authentication flow (login/register)
+- Protected API routes
+- CRUD operations (favourites)
+- Basic frontend + backend integration
+- Error handling and loading states
+
+---
+
+## Author
+Pramada Shrestha
