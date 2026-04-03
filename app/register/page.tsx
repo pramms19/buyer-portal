@@ -39,7 +39,7 @@ export default function Register() {
   };
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8 pt-14 flex justify-center items-center">
+    <div className="px-4 sm:px-6 lg:px-8 pt-20 flex justify-center items-center">
       <Card className="bg-white max-w-sm md:max-w-md min-w-xs md:min-w-sm shadow-sm py-6">
         <CardTitle className="text-xl md:text-2xl font-semibold text-secondary-foreground text-center">
           Create Account
